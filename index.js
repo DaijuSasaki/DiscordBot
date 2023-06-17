@@ -12,10 +12,13 @@ client.once(Events.ClientReady, c => {
 
 client.on(Events.InteractionCreate, async interaction => {
     if(!interaction.isChatInputCommand()) return;
+    SCMD(interaction, pingFile);
+});
 
-    if(interaction.commandName === pingFile.data.name) {
+async function SCMD(interaction, file) {
+    if(interaction.commandName === file.data.name) {
 	try {
-	    await pingFile.execute(interaction);
+	    await file.execute(interaction);
 	}
 	catch(error) {
 	    console.error(error);
@@ -30,6 +33,6 @@ client.on(Events.InteractionCreate, async interaction => {
     else {
 	console.error(`${interaction.commandName}というコマンドには対応していません.`);
     }
-});
+}
 
 client.login(token);
