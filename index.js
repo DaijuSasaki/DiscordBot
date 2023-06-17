@@ -1,6 +1,5 @@
 require('dotenv').config();
 const { Client, Events, GatewayIntentBits } = require('discord.js');
-2
 
 const pingFile = require('./commands/ping.js');
 
